@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use App\Traits\HasTimestamps;
+
+
+class Tag extends Model
+{
+    use HasFactory;
+    use HasTimestamps;
+
+    protected $table = 'tags';
+
+    protected $fillable = ['name', 'slug'];
+
+    public function threads(): MorphToMany
+    {
+        return $this->morphedByMany(Thread::class, 'taggable');
+    }
+}
