@@ -27,26 +27,26 @@
 
                                 {{-- Channel --}}
                                 <div>
-                                    <x-form.label for="category" value="{{ __('Channel') }}" />
-                                    <select name="category" id="category" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                    <x-form.label for="channel" value="{{ __('Channel') }}" />
+                                    <select name="channel" id="channel" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                         <option value="">Select a Channel</option>
                                         @foreach($channels as $channel)
                                             <option value="{{ $channel->id()}}">{{ $channel->name() }}</option>
                                         @endforeach
                                     </select>
-                                    <x-form.error for="category" />
+                                    <x-form.error for="channel" />
                                 </div>
 
                                 {{-- Tags --}}
                                 <div>
-                                    <x-form.label for="category" value="{{ __('Tag') }}" />
-                                    <select name="category" id="category" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                                        <option value="">Select a Tag</option>
+                                    <x-form.label for="tags" value="{{ __('Tags') }}" />
+                                    <p>Select up to 3 Tags</p>
+                                    <select name="tags[]" id="tags" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" multiple x-data="{}" x-init="function(){choices($el)}">
                                         @foreach($tags as $tag)
-                                            <option value="{{ $tag->id}}">{{ $tag->name }}</option>
+                                            <option value="{{ $tag->id() }}">{{ $tag->name() }}</option>
                                         @endforeach
                                     </select>
-                                    <x-form.error for="category" />
+                                    <x-form.error for="tags" />
                                 </div>
 
                                 {{-- Body --}}
