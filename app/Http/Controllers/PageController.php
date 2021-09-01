@@ -6,16 +6,6 @@ namespace App\Http\Controllers;
 class PageController extends Controller
 {
 
-    public function single()
-    {
-        return view('threads.show');
-    }
-
-    public function create()
-    {
-        return view('threads.create');
-    }
-
     public function users()
     {
         return view('admin.users.index');

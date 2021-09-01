@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Channel;
+use App\Models\Tag;
 use App\Models\Thread;
 use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
+
+    public function __construct(){
+        return $this->middleware(['auth', 'verified'])->except(['index','show']);
+    }
 
     public function index()
     {
@@ -18,7 +23,7 @@ class ThreadController extends Controller
 
     public function create()
     {
-        //
+        return view('threads.create', ['channels' => Channel::all(), 'tags' => Tag::all()]);
     }
 
     public function store(Request $request)
@@ -26,46 +31,22 @@ class ThreadController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
     public function show(Channel $channel, Thread $thread)
     {
         return view('threads.show', compact('thread','channel'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Thread $thread)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Thread $thread)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Thread $thread)
     {
         //
