@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use App\Traits\HasTimestamps;
+use App\Traits\HasTimeStamps;
 
 
 class Tag extends Model
 {
     use HasFactory;
-    use HasTimestamps;
+    use HasTimeStamps;
 
     protected $table = 'tags';
 

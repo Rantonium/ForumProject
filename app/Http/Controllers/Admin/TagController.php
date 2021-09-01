@@ -53,7 +53,6 @@ class TagController extends Controller
         return redirect()->route('admin.tags.index')->with('success','Tag Updated');
     }
 
-
     public function destroy(Tag $tag): RedirectResponse
     {
         $tag->delete();

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasAuthor;
 use App\Traits\HasTags;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,7 @@ class Thread extends Model
 {
     use HasFactory;
     use HasTags;
+    use HasAuthor;
 
     public function channel(): BelongsTo{
         return $this->belongsTo(Channel::class);
