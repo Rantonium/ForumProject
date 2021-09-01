@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Pages\TagController;
 use App\Http\Controllers\Pages\ThreadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
@@ -24,6 +25,11 @@ Route::group(['prefix'=> 'threads', 'as' => 'threads.'], function(){
    Route::get('/', [ThreadController::class, 'index'])->name('index');
    Route::get('/create', [ThreadController::class, 'create'])->name('create');
    Route::get('/{channel:slug}/{thread:slug}', [ThreadController::class, 'show'])->name('show');
+   Route::post('/', [ThreadController::class, 'store'])->name('store');
+
+   Route::group(['as' => 'tags.'], function(){
+      Route::get('/{tag:slug}', [TagController::class, 'index'])->name('index');
+   });
 });
 
 Route::get('dashboard/users', [PageController::class, 'users'])->name('users');
