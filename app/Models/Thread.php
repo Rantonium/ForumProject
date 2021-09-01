@@ -14,7 +14,7 @@ class Thread extends Model
     use HasTags;
     use HasAuthor;
 
-    protected $fillable = ['subject', 'body', 'channel_id', 'author_id'];
+    protected $fillable = ['title', 'body', 'slug', 'channel_id', 'author_id'];
 
     protected $with = ['authorRelation', 'channels', 'tagsRelation'];
 
