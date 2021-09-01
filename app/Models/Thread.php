@@ -14,7 +14,17 @@ class Thread extends Model
     use HasTags;
     use HasAuthor;
 
+    protected $fillable = ['subject', 'body', 'channel_id', 'author_id'];
+
+    protected $with = ['authorRelation', 'channels', 'tagsRelation'];
+
+
     public function channel(): BelongsTo{
         return $this->belongsTo(Channel::class);
+    }
+
+    public function delete(){
+        $this->removeTags();
+        parent::delete();
     }
 }
