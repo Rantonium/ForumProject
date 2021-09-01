@@ -16,8 +16,8 @@ class CreateTaggablesTable extends Migration
         Schema::create('taggables', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tag_id')->constrained('tags');
-            $table->integer('taggable_id');
-            $table->string('taggable_type')->default('');
+            $table->integer('taggables_id');
+            $table->string('taggables_type')->default('');
             $table->timestamps();
         });
     }

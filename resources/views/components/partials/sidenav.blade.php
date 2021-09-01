@@ -15,7 +15,7 @@
                 {{ __('Subscribe to Thread') }}
             </x-buttons.secondary>
             <p class="text-sm text-gray-500">
-                Subscribe to be notified whenever new discussions are created in the "Category One" forum.
+                Here you will be able to subscribe to a channel
             </p>
         </div>
     </div>
@@ -23,37 +23,37 @@
     {{-- Categories --}}
     <div class="p-4 space-y-4 bg-white shadow">
         <div class="pb-4 mb-4 border-b border-gray-200">
-            <h2 class="font-bold uppercase">Categories</h2>
+            <h2 class="font-bold uppercase">Channels</h2>
         </div>
 
         <ul class="space-y-4">
             <li>
                 <a href="#" class="flex items-center justify-between">
-                    Category One
+                    Channel One
                     <span class="px-2 text-white bg-green-300 rounded">45</span>
                 </a>
             </li>
             <li>
                 <a href="#" class="flex items-center justify-between">
-                    Category Two
+                    Channel Two
                     <span class="px-2 text-white bg-green-300 rounded">45</span>
                 </a>
             </li>
             <li>
                 <a href="#" class="flex items-center justify-between">
-                    Category Three
+                    Channel Three
                     <span class="px-2 text-white bg-green-300 rounded">45</span>
                 </a>
             </li>
             <li>
                 <a href="#" class="flex items-center justify-between">
-                    Category Four
+                    Channel Four
                     <span class="px-2 text-white bg-green-300 rounded">45</span>
                 </a>
             </li>
             <li>
                 <a href="#" class="flex items-center justify-between">
-                    Category Five
+                    Channel Five
                     <span class="px-2 text-white bg-green-300 rounded">45</span>
                 </a>
             </li>

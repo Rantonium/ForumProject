@@ -7,6 +7,7 @@ use App\Traits\HasTags;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Thread extends Model
 {
@@ -16,11 +17,23 @@ class Thread extends Model
 
     protected $fillable = ['title', 'body', 'slug', 'channel_id', 'author_id'];
 
-    protected $with = ['authorRelation', 'channels', 'tagsRelation'];
+    protected $with = ['authorRelation', 'channel', 'tagsRelation'];
 
 
     public function channel(): BelongsTo{
         return $this->belongsTo(Channel::class);
+    }
+
+    public function excerpt(int $limit = 200): string{
+        return Str::limit(strip_tags($this->body()),$limit);
+    }
+
+    public function title(): string{
+        return $this->title;
+    }
+
+    public function body(): string{
+        return $this->body;
     }
 
     public function delete(){
