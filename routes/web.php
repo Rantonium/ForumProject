@@ -22,6 +22,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix'=> 'threads', 'as' => 'threads.'], function(){
    Route::get('/', [ThreadController::class, 'index'])->name('index');
+   Route::get('/{channel:slug}/{thread:slug}', [ThreadController::class, 'show'])->name('show');
 });
 
 Route::get('/channel/discussion/topic', [PageController::class, 'single'])->name('single');

@@ -15,12 +15,12 @@
                 {{ __('Subscribe to Thread') }}
             </x-buttons.secondary>
             <p class="text-sm text-gray-500">
-                Here you will be able to subscribe to a channel
+                Here you will be able to subscribe to a thread
             </p>
         </div>
     </div>
 
-    {{-- Categories --}}
+    {{-- Threads --}}
     <div class="p-4 space-y-4 bg-white shadow">
         <div class="pb-4 mb-4 border-b border-gray-200">
             <h2 class="font-bold uppercase">Channels</h2>

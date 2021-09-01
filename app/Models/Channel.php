@@ -16,4 +16,12 @@ class Channel extends Model
         return $this->hasMany(Thread::class);
     }
 
+    public function name():string{
+        return $this->name;
+    }
+
+    public function slug():string{
+        return $this->slug;
+    }
+
 }

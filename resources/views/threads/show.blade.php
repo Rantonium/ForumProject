@@ -4,7 +4,7 @@
         <x-partials.sidenav />
 
         <section class="flex flex-col col-span-3 gap-y-4">
-            <small class="text-sm text-gray-400">category>discussion>topic</small>
+            <small class="text-sm text-gray-400">Threads>{{ $channel->name() }}>{{$thread->title()}}</small>
 
             <article class="p-5 bg-white shadow">
                 <div class="grid grid-cols-8">
@@ -17,13 +17,11 @@
                     {{-- Thread --}}
                     <div class="col-span-7 space-y-6">
                         <div class="space-y-3">
-                            <h2 class="text-xl tracking-wide hover:text-blue-400">This is the heading for the forum post</h2>
+                            <h2 class="text-xl tracking-wide hover:text-blue-400">{{ $thread->title() }}</h2>
                             <p class="text-gray-500">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum beatae quod eligendi consequatur omnis sequi veritatis quidem reiciendis asperiores sint illum debitis quam voluptates, nemo rem consectetur dolor error neque fuga nobis est magnam! Pariatur illum enim nobis laboriosam suscipit dolore aperiam aut. Id maiores debitis voluptatem esse expedita ullam!
+                                {{ $thread->body() }}
                             </p>
-                            <p class="text-gray-500">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum beatae quod eligendi consequatur omnis sequi veritatis quidem reiciendis asperiores sint illum debitis quam voluptates, nemo rem consectetur dolor error neque fuga nobis est magnam! Pariatur illum enim nobis laboriosam suscipit dolore aperiam aut. Id maiores debitis voluptatem esse expedita ullam!
-                            </p>
+
                         </div>
 
                         <div class="flex justify-between">

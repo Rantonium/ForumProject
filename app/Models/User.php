@@ -81,4 +81,8 @@ class User extends Authenticatable
     public function email(): string{
         return $this->email;
     }
+
+    public function name():string{
+        return $this->name;
+    }
 }
