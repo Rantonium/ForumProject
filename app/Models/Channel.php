@@ -24,4 +24,8 @@ class Channel extends Model
         return $this->slug;
     }
 
+    public function id():string{
+        return $this->id;
+    }
+
 }
