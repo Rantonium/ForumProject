@@ -4,7 +4,7 @@
         <x-partials.sidenav />
 
         <section class="flex flex-col col-span-3 gap-y-4">
-            <small class="text-sm text-gray-400">{{$thread->title()}}>edit</small>
+            <small class="text-sm text-gray-400">discussion>edit</small>
 
             <article class="p-5 bg-white shadow">
                 <div class="grid grid-cols-8">
@@ -21,7 +21,7 @@
                                 {{-- Title --}}
                                 <div>
                                     <x-form.label for="title" value="{{ __('Title') }}" />
-                                    <x-form.input id="title" class="block w-full mt-1" type="text" name="title" :value="{{$thread->title()}}" required autofocus />
+                                    <x-form.input id="title" class="block w-full mt-1" type="text" name="title" :value="$thread->title()" required autofocus />
                                     <x-form.error for="title" />
                                 </div>
 
@@ -29,12 +29,9 @@
                                 <div>
                                     <x-form.label for="channel" value="{{ __('Channel') }}" />
                                     <select name="channel" id="channel" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                        <option value="">Select a Channel</option>
                                         @foreach($channels as $channel)
-                                            <option value="{{ $channel->id()}}"
-                                                    @if($channel->id() === $selectedChannel->id())
-                                                        selected
-                                                    @endif
-                                            >{{ $channel->name() }}</option>
+                                            <option value="{{ $channel->id()}}" @if($channel->id() === $selectedChannel->id()) selected @endif > {{ $channel->name() }}</option>
                                         @endforeach
                                     </select>
                                     <x-form.error for="channel" />
