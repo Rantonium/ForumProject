@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ThreadStoreRequest;
 use App\Jobs\CreateThread;
+use App\Jobs\UpdateThread;
 use App\Models\Channel;
 use App\Models\Tag;
 use App\Models\Thread;
@@ -56,9 +57,14 @@ class ThreadController extends Controller
         return view('threads.edit', ['thread' => $thread, 'tags' => Tag::all(), 'previousTags' => $previousTags, 'channels' => Channel::all(), 'selectedChannel' => $selectedChannel]);
     }
 
-    public function update(Request $request, Thread $thread)
+    /**
+     * @throws AuthorizationException
+     */
+    public function update(ThreadStoreRequest $request, Thread $thread)
     {
-        //
+        $this->authorize(ThreadPolicy::UPDATE, $thread);
+        $this->dispatchSync(UpdateThread::fromRequest($thread, $request));
+        return redirect()->route('threads.index')->with('success', 'Thread Updated');
     }
 
     public function destroy(Thread $thread)
