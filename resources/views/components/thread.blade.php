@@ -4,8 +4,7 @@
 
         {{-- Avatar --}}
         <div class="col-span-1">
-            <x-user.avatar />
-            <span class="text-xs text-gray-500">{{$thread->author()->name()}}</span>
+            <x-user.avatar :user="$thread->author()"/>
         </div>
 
         {{-- Content --}}
@@ -58,11 +57,17 @@
             </div>
         </div>
 
-        @can(App\Policies\ThreadPolicy::UPDATE, $thread)
         <div class="absolute right-2 bottom-1">
-            <x-links.secondary href="{{ route('threads.edit', $thread->slug()) }}">Edit thread</x-links.secondary>
+            <div class="flex space-x-2">
+                    @can(App\Policies\ThreadPolicy::UPDATE, $thread)
+                        <x-links.secondary href="{{ route('threads.edit', $thread->slug()) }}">Edit thread</x-links.secondary>
+                    @endcan
+
+                    @can(App\Policies\ThreadPolicy::DELETE, $thread)
+                        <livewire:thread.delete :thread="$thread" :key="$thread->id()" />
+                    @endcan
+            </div>
         </div>
-        @endcan
 
     </div>
 </article>

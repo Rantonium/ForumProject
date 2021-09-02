@@ -1,7 +1,7 @@
-@if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-<button class="flex items-center text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-    {{-- <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> --}}
-    <img class="object-cover w-16 h-16 rounded" src="{{ asset('img/avatars/person1.jpg') }}" alt="Person One" />
+@isset($user)
+<button class="flex flex-col items-center text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+     <img {{ $attributes->merge(['class' => 'object-cover w-16 h-16 rounded-full']) }} src="{{ $user->profile_photo_url }}" alt="{{ $user->name() }}" />
+     <span class="mt-2 text-xs text-gray-500"> {{ $user->name() }}</span>
 </button>
 @else
 <span class="inline-flex rounded-md">
@@ -9,4 +9,4 @@
         {{ Auth::user()->name }}
     </button>
 </span>
-@endif
+@endisset
