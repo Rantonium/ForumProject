@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Thread;
 use App\Policies\ThreadPolicy;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
 
 class Delete extends Component
@@ -14,6 +13,7 @@ class Delete extends Component
     public $confirmingThreadDeletion = false;
     use AuthorizesRequests;
 
+    /** @noinspection PhpUnused */
     public function confirmThreadDeletion(){
         $this->resetErrorBag();
         $this->dispatchBrowserEvent('confirming-delete-thread');

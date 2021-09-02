@@ -5,7 +5,6 @@ namespace App\Jobs;
 use App\Http\Requests\ThreadStoreRequest;
 use App\Models\Thread;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -40,6 +39,7 @@ class UpdateThread implements ShouldQueue
             'tags'=>$request->tags()]);
     }
 
+    /** @noinspection PhpMissingReturnTypeInspection */
     public function handle()
     {
         $this->thread->update($this->attributes);

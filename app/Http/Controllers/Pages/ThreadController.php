@@ -12,7 +12,6 @@ use App\Models\Thread;
 use App\Policies\ThreadPolicy;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
@@ -59,6 +58,7 @@ class ThreadController extends Controller
 
     /**
      * @throws AuthorizationException
+     * @noinspection PhpMissingReturnTypeInspection
      */
     public function update(ThreadStoreRequest $request, Thread $thread)
     {
