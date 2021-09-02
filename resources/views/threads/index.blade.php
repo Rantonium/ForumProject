@@ -5,6 +5,9 @@
             <x-partials.sidenav />
 
             <div class="flex flex-col col-span-3 gap-y-4">
+
+                <x-alerts.main/>
+
                 @foreach($threads as $thread)
                     <x-thread :thread="$thread"/>
                 @endforeach
