@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ThreadStoreRequest;
+use App\Jobs\CreateThread;
 use App\Models\Channel;
 use App\Models\Tag;
 use App\Models\Thread;
@@ -34,6 +35,8 @@ class ThreadController extends Controller
 
     public function store(ThreadStoreRequest $request): RedirectResponse
     {
+        $this->dispatchSync(CreateThread::fromRequest($request));
+
         return redirect()->route('threads.index')->with('success', 'Thread Created');
     }
 
