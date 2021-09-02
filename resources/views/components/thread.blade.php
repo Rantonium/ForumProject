@@ -60,7 +60,7 @@
 
         @can(App\Policies\ThreadPolicy::UPDATE, $thread)
         <div class="absolute right-2 bottom-1">
-            <x-links.secondary href="{{route('threads.edit', $thread->slug())}}">Edit thread</x-links.secondary>
+            <x-links.secondary href="{{ route('threads.edit', $thread->slug()) }}">Edit thread</x-links.secondary>
         </div>
         @endcan
 

@@ -8,11 +8,10 @@ use App\Jobs\CreateThread;
 use App\Models\Channel;
 use App\Models\Tag;
 use App\Models\Thread;
+use App\Policies\ThreadPolicy;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Mews\Purifier\Facades\Purifier;
 
 class ThreadController extends Controller
 {
@@ -46,9 +45,15 @@ class ThreadController extends Controller
     }
 
 
+    /**
+     * @throws AuthorizationException
+     */
     public function edit(Thread $thread)
     {
-        return view('threads.edit', compact('thread'));
+        $this->authorize(ThreadPolicy::UPDATE, $thread);
+        $previousTags = $thread->tags()->pluck('id')->toArray();
+        $selectedChannel = $thread->channel;
+        return view('threads.edit', ['thread' => $thread, 'tags' => Tag::all(), 'previousTags' => $previousTags, 'channels' => Channel::all(), 'selectedChannel' => $selectedChannel]);
     }
 
     public function update(Request $request, Thread $thread)
