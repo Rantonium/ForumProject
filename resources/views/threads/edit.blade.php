@@ -43,7 +43,11 @@
                                     <p>Select up to 3 Tags</p>
                                     <select name="tags[]" id="tags" class="w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" multiple x-data="{}" x-init="function(){choices($el)}">
                                         @foreach($tags as $tag)
-                                            <option value="{{ $tag->id() }}">{{ $tag->name() }}</option>
+                                            <option value="{{ $tag->id() }}"
+                                                @if(in_array($tag->id(), $previousTags))
+                                                    selected
+                                                @endif >
+                                                {{ $tag->name() }}</option>
                                         @endforeach
                                     </select>
                                     <x-form.error for="tags" />
@@ -52,7 +56,9 @@
                                 {{-- Body --}}
                                 <div>
                                     <x-form.label for="body" value="{{ __('Body') }}" />
-                                    <x-trix name="body" styling="shadow-inner bg-gray-100"></x-trix>
+                                    <x-trix name="body" styling="shadow-inner bg-gray-100">
+                                        {{ $thread->body() }}
+                                    </x-trix>
                                     <x-form.error for="body" />
                                 </div>
 
