@@ -52,7 +52,7 @@
                                 {{-- Body --}}
                                 <div>
                                     <x-form.label for="body" value="{{ __('Body') }}" />
-                                    <x-trix name="body" styling="shadow-inner bg-gray-100" />
+                                    <x-trix name="body" styling="shadow-inner bg-gray-100"></x-trix>
                                     <x-form.error for="body" />
                                 </div>
 

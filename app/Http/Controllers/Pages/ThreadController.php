@@ -34,16 +34,6 @@ class ThreadController extends Controller
 
     public function store(ThreadStoreRequest $request): RedirectResponse
     {
-        $thread = new Thread;
-        $thread->title = $request->title;
-        $thread->body = Purifier::clean($request->body);
-        $thread->slug = Str::slug($request->title);
-        $thread->channel_id = $request->channel;
-        /** @noinspection PhpPossiblePolymorphicInvocationInspection */
-        $thread->author_id = Auth::user()->id();
-        $thread->save();
-        $thread->syncTags($request->tags);
-
         return redirect()->route('threads.index')->with('success', 'Thread Created');
     }
 
