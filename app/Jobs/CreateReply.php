@@ -42,7 +42,7 @@ class CreateReply implements ShouldQueue
     public function handle(): Reply
     {
         $reply = new Reply(['body' => $this->body]);
-        $reply->isAuthoredBy($this->author);
+        $reply->authoredBy($this->author);
         $reply->to($this->replyable);
         $reply->save();
 
