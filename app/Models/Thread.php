@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
-class Thread extends Model
+class Thread extends Model implements ReplyAble
 {
     use HasFactory;
     use HasTags;
@@ -45,6 +45,10 @@ class Thread extends Model
         return $this->slug;
     }
 
+    public function id(): int{
+        return $this->id;
+    }
+
     public function delete(){
         $this->removeTags();
         parent::delete();
@@ -54,5 +58,10 @@ class Thread extends Model
         return $query->whereHas('tagsRelation', function($query) use ($tag){
             $query->where('tags.slug', $tag);
         });
+    }
+
+    public function replyAbleSubject(): string
+    {
+        return $this->title();
     }
 }

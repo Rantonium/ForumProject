@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 interface ReplyAble{
-    public function subject(): string;
     public function replies();
     public function latestReplies(int $amount=3);
     public function deleteReplies();

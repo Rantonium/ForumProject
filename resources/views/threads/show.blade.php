@@ -4,6 +4,7 @@
         <x-partials.sidenav />
 
         <section class="flex flex-col col-span-3 gap-y-4">
+            <x-alerts.main />
             <small class="text-sm text-gray-400">Threads>{{ $channel->name() }}>{{$thread->title()}}</small>
 
             <article class="p-5 bg-white shadow">
@@ -90,6 +91,8 @@
                         <div>
                             <x-trix name="body" styling="bg-gray-100 shadow-inner h-40" />
                             <x-form.error class="error" for="body"/>
+                            <input type="hidden" name="replyable_id" value="{{$thread->id()}}">
+                            <input type="hidden" name="replyable_type" value="threads">
                         </div>
                         <div class="grid">
                             <x-buttons.primary class="justify-self-end">
