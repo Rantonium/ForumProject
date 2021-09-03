@@ -53,11 +53,38 @@
             </article>
 
             <div class="mt-6 space-y-5">
-            {{-- Replies --}}
-            @foreach($thread->replies() as $reply)
-                <livewire:reply.update :reply="$reply" :key="$reply->id()" />
+                {{-- Replies --}}
+                @foreach($thread->replies() as $reply)
+                    <livewire:reply.update :reply="$reply" :key="$reply->id()" />
 
-            @endforeach
+                    <div class="p-5 space-y-4 text-gray-500 bg-white border-l border-blue-300 shadow">
+                        <div class="grid grid-cols-8">
+                            <div class="col-span-1">
+                                <x-user.avatar :user="$reply->author()"/>
+                            </div>
+                            <div class="col-span-7 space-y-4">
+                                <p>
+                                    {!! $reply->body() !!}
+                                </p>
+                                <div class="flex justify-between">
+                                    {{-- Likes --}}
+                                    <div class="flex space-x-5 text-gray-500">
+                                        <a href="" class="flex items-center space-x-2">
+                                            <x-heroicon-o-heart class="w-5 h-5 text-red-300" />
+                                            <span class="text-xs font-bold">TODO</span>
+                                        </a>
+                                    </div>
+
+                                    {{-- Date Posted --}}
+                                    <div class="flex items-center text-xs text-gray-500">
+                                        <x-heroicon-o-clock class="w-4 h-4 mr-1" />
+                                        Replied: {{ $reply->created_at->diffForHumans() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
 
             @auth
@@ -65,14 +92,12 @@
                     <h2 class="text-gray-500">Post a reply</h2>
                     <x-form action="{{route('replies.store')}}">
                         <div>
-                            <input type="text" name="body" class="w-full bg-gray-200 border-none shadow-inner focus:ring-blue-400" />
+                            <x-trix name="body" styling="bg-gray-100 shadow-inner h-40" />
                             <x-form.error class="error" for="body"/>
                             <input type="hidden" name="replyable_id" value="{{$thread->id()}}">
-                            <x-form.error for="replyable_id" />
                             <input type="hidden" name="replyable_type" value="threads">
-                            <x-form.error for="replyable_type" />
                         </div>
-                        <div class="grid mt-4">
+                        <div class="grid">
                             <x-buttons.primary class="justify-self-end">
                                 {{ __('Post') }}
                             </x-buttons.primary>
