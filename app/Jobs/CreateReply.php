@@ -30,7 +30,7 @@ class CreateReply implements ShouldQueue
         $this->replyable = $replyable;
     }
 
-    public static function fromRequest(CreateReplyRequest $request){
+    public static function fromRequest(CreateReplyRequest $request): self{
         return new static ($request->body(), $request->author(), $request->replyAble());
     }
 
