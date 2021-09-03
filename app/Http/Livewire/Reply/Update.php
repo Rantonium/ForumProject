@@ -14,6 +14,8 @@ class Update extends Component
     public $replyId;
     public $replyOldBody;
     public $replyNewBody;
+    public $author;
+    public $createdAt;
 
     /**
      * @throws AuthorizationException
@@ -36,6 +38,8 @@ class Update extends Component
     public function mount(Reply $reply){
         $this->replyId = $reply->id();
         $this->replyOldBody = $reply->body();
+        $this->author = $reply->author();
+        $this->createdAt = $reply->created_at;
         // as soon as we update the old body too
         $this->initialize($reply);
     }

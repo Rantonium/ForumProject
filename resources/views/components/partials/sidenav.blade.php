@@ -60,28 +60,28 @@
         </ul>
     </div>
 
-{{--    <div class="p-4 space-y-4 bg-white shadow">--}}
-{{--        <ul class="space-y-4 text-gray-500">--}}
-{{--            <li>--}}
-{{--                <a href="#" class="flex items-center space-x-2">--}}
-{{--                    <x-heroicon-s-star class="w-5 h-5 text-yellow-500" />--}}
-{{--                    <span>Popular this week</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <a href="#" class="flex items-center space-x-2">--}}
-{{--                    <x-heroicon-s-fire class="w-5 h-5 text-red-600" />--}}
-{{--                    <span>Popular all time</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--            <li>--}}
-{{--                <a href="#" class="flex items-center space-x-2">--}}
-{{--                    <x-heroicon-s-chat class="w-5 h-5 text-blue-400" />--}}
-{{--                    <span>No replies yet</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--        </ul>--}}
-{{--    </div>--}}
+    <div class="p-4 space-y-4 bg-white shadow">
+        <ul class="space-y-4 text-gray-500">
+            <li>
+                <a href="#" class="flex items-center space-x-2">
+                    <x-heroicon-s-star class="w-5 h-5 text-yellow-500" />
+                    <span>Popular this week</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex items-center space-x-2">
+                    <x-heroicon-s-fire class="w-5 h-5 text-red-600" />
+                    <span>Popular all time</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex items-center space-x-2">
+                    <x-heroicon-s-chat class="w-5 h-5 text-blue-400" />
+                    <span>No replies yet</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 
 
 </aside>
