@@ -54,6 +54,7 @@ class Thread extends Model implements ReplyAble
         parent::delete();
     }
 
+    /** @noinspection PhpUnused */
     public function scopeForTag(Builder $query, string $tag): Builder{
         return $query->whereHas('tagsRelation', function($query) use ($tag){
             $query->where('tags.slug', $tag);

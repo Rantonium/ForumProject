@@ -5,7 +5,6 @@ use App\Http\Controllers\Pages\TagController;
 use App\Http\Controllers\Pages\ThreadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\Pages\HomeController;
 
 /*
 |--------------------------------------------------------------------------

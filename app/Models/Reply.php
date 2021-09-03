@@ -33,10 +33,12 @@ class Reply extends Model
         return Str::limit(strip_tags($this->body()), $limit);
     }
 
-    public function to(ReplyAble $replyAble){
+    public function to(ReplyAble $replyAble): Model
+    {
         return $this->replyAbleRelation()->associate($replyAble);
     }
 
+    /** @noinspection PhpUnused */
     public function replyAble(): ReplyAble{
         return $this->replyAbleRelation;
     }
