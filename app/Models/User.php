@@ -72,6 +72,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->type;
     }
 
+    public function emailAddress(): string{
+        return $this->email;
+    }
+
     public function isAdmin():bool{
         return $this->type() === self::ADMIN;
     }
