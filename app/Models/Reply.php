@@ -2,10 +2,46 @@
 
 namespace App\Models;
 
+use App\Traits\HasAuthor;
+use App\Traits\HasTimeStamps;
+use App\Traits\ModelHelpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Str;
 
 class Reply extends Model
 {
     use HasFactory;
+    use HasAuthor;
+    use HasTimeStamps;
+    use ModelHelpers;
+
+    protected $table = 'replies';
+
+    protected $fillable = ['body'];
+
+    public function id(): int{
+        return $this->id;
+    }
+
+    public function body(): string{
+        return $this->body;
+    }
+
+    public function excerpt(int $limit = 200): string{
+        return Str::limit(strip_tags($this->body()), $limit);
+    }
+
+    public function to(ReplyAble $replyAble){
+        return $this->replyAbleRelation()->associate($replyAble);
+    }
+
+    public function replyAbleRelation(): MorphTo{
+        return $this->morphTo('replyAbleRelation', 'replyAble_type', 'replyAble_id');
+    }
+
+    public function replyAble(): ReplyAble{
+        return $this->replyAbleRelation;
+    }
 }
