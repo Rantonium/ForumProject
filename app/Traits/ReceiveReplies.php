@@ -2,9 +2,10 @@
 
 namespace App\Traits;
 
+use App\Models\Reply;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-trait HasReplies{
+trait ReceiveReplies{
     public function replies(){
         return $this->repliesRelation;
     }
