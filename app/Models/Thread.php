@@ -18,6 +18,8 @@ class Thread extends Model
     use HasAuthor;
     use ReceiveReplies;
 
+    protected $table = 'threads';
+
     protected $fillable = ['title', 'body', 'slug', 'channel_id', 'author_id'];
 
     protected $with = ['authorRelation', 'channel', 'tagsRelation'];
