@@ -38,7 +38,6 @@ class Reply extends Model
         return $this->replyAbleRelation()->associate($replyAble);
     }
 
-    /** @noinspection PhpUnused */
     public function replyAble(): ReplyAble{
         return $this->replyAbleRelation;
     }

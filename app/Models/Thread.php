@@ -45,7 +45,7 @@ class Thread extends Model implements ReplyAble
         return $this->slug;
     }
 
-    public function id(): int{
+    public function id(): string{
         return $this->id;
     }
 

@@ -39,7 +39,7 @@ class NewReplyNotification extends Notification
             'reply' => $this->reply->id(),
             'replyable_id' => $this->reply->replyable_id,
             'replyable_type' => $this->reply->replyable_type,
-            'replyable_subject' => $this->reply->replyable()->replyAbleSubject(),
+            'replyable_subject' => $this->reply->replyAble()->replyAbleSubject(),
         ];
     }
 }
