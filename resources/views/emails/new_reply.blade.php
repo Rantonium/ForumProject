@@ -5,7 +5,7 @@
         {{ $reply->excerpt(250) }}
     @endcomponent
 
-    @component('mail::button', ['url' => route('threads.show', $reply->replyAble()->channel->slug(), $reply->replyAble()->slug())])
+    @component('mail::button', ['url' => route('threads.show', ['channel' => $reply->replyAble()->channel->slug(), 'thread' => $reply->replyAble()->slug()])])
         This is the thread
     @endcomponent
 
