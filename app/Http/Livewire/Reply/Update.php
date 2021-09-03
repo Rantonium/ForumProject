@@ -6,6 +6,7 @@ use App\Models\Reply;
 use App\Policies\ReplyPolicy;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
 
 class Update extends Component
@@ -16,6 +17,8 @@ class Update extends Component
     public $replyNewBody;
     public $author;
     public $createdAt;
+
+    protected $listeners = ['deleteReply'];
 
     /**
      * @throws AuthorizationException
@@ -43,6 +46,14 @@ class Update extends Component
         // as soon as we update the old body too
         $this->initialize($reply);
     }
+
+    /** @noinspection PhpMissingReturnTypeInspection */
+    public function deleteReply($page)
+    {
+        session()->flash('success', 'Reply Deleted');
+        return redirect()->to($page);
+    }
+
     public function render()
     {
         return view('livewire.reply.update');

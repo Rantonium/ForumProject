@@ -29,11 +29,17 @@
                     </div>
                 </div>
 
-                @can(App\Policies\ReplyPolicy::UPDATE, App\Models\Reply::find($replyId))
-                <x-links.secondary x-on:click="editReply = true; $nextTick(()=> focus())" class="absolute cursor-pointer top-2 right-2">
-                    {{ __('Edit') }}
-                </x-links.secondary>
-                @endcan
+                <div class="absolute flex-col top-2 right-2 space-y-10">
+                    @can(App\Policies\ReplyPolicy::UPDATE, App\Models\Reply::find($replyId))
+                        <x-links.secondary x-on:click="editReply = true; $nextTick(()=> focus())" class="absolute cursor-pointer top-2 right-2">
+                            {{ __('Edit') }}
+                        </x-links.secondary>
+                    @endcan
+
+                    @can(App\Policies\ReplyPolicy::DELETE, App\Models\Reply::find($replyId))
+                      <livewire:reply.delete :replyId="$replyId" :wire:key="$replyId" :page="request()->fullUrl()"/>
+                    @endcan
+                </div>
             </div>
 
         <div class="grid grid-cols-8">
