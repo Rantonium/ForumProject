@@ -8,7 +8,6 @@ class LoginResponse implements ContractsLoginResponse{
 
     public function toResponse($request){
         // PhpStorm annoying again
-        /** @noinspection PhpUndefinedMethodInspection */
         if(auth()->user()->isAdmin()){
             return redirect()->route('admin.index');
         }
