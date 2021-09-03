@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\HasAuthor;
 use App\Traits\HasTags;
+use App\Traits\ReceiveReplies;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class Thread extends Model
     use HasFactory;
     use HasTags;
     use HasAuthor;
+    use ReceiveReplies;
 
     protected $fillable = ['title', 'body', 'slug', 'channel_id', 'author_id'];
 
