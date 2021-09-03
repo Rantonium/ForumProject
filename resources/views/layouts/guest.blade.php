@@ -7,8 +7,8 @@
 <body class="bg-gray-100">
 
     {{-- Header --}}
-    <header class="relative flex items-center justify-center h-40 bg-blue-500">
-        <img class="absolute z-10 object-cover w-full h-40 opacity-10" src="{{ asset('img/bg/bg-header.jpg') }}" alt="">
+    <header class="relative flex items-center justify-center h-40">
+        <img class="absolute z-10 object-cover w-full h-40 opacity-100" src="{{ asset('img/bg/bg-header.jpg') }}" alt="">
         <h2 class="z-50 text-4xl font-bold text-gray-200">Pentalog Forum Project</h2>
     </header>
 
