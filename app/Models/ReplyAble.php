@@ -10,4 +10,6 @@ interface ReplyAble{
     public function deleteReplies();
     public function repliesRelation():MorphMany;
     public function replyAbleSubject(): string;
+
+    public function subject();
 }

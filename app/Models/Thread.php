@@ -65,4 +65,8 @@ class Thread extends Model implements ReplyAble
     {
         return $this->title();
     }
+
+    public function subject(): string{
+        return $this->title();
+    }
 }
