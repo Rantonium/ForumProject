@@ -1,5 +1,5 @@
 @component('mail::message')
-    **{{ $reply->author()->name() }}** replied to this thread
+    {{ $reply->author()->name() }} replied to this thread
 
     @component('mail::panel')
         {{ $reply->excerpt(250) }}
