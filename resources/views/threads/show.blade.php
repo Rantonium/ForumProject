@@ -12,8 +12,7 @@
 
                     {{-- Avatar --}}
                     <div class="col-span-1">
-                        <x-user.avatar />
-                        <span class="text-xs text-gray-500"> {{ $thread->author()->name() }}</span>
+                        <x-user.avatar :user="$thread->author()"/>
                     </div>
 
                     {{-- Thread --}}
@@ -53,13 +52,14 @@
                 </div>
             </article>
 
+            <div class="mt-6 space-y-5">
             {{-- Replies --}}
             @foreach($thread->replies() as $reply)
                 <div class="p-5 space-y-4 text-gray-500 bg-white border-l border-blue-300 shadow">
                     <div class="grid grid-cols-8">
-                        <button class="flex items-center text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                             <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                        </button>
+                        <div class="col-span-1">
+                            <x-user.avatar :user="$reply->author()"/>
+                        </div>
                         <div class="col-span-7 space-y-4">
                             <p>
                                 {!! $reply->body() !!}
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             @endforeach
-
+            </div>
 
             @auth
                 <div class="p-5 space-y-4 bg-white shadow">
