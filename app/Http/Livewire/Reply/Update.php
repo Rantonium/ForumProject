@@ -3,16 +3,24 @@
 namespace App\Http\Livewire\Reply;
 
 use App\Models\Reply;
+use App\Policies\ReplyPolicy;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class Update extends Component
 {
+    use AuthorizesRequests;
     public $replyId;
     public $replyOldBody;
     public $replyNewBody;
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(){
         $reply = Reply::findOrFail($this->replyId);
+        $this->authorize(ReplyPolicy::UPDATE, $reply);
         $reply->body = $this->replyNewBody;
         $reply->save();
         session()->flash('success', 'Reply Updated');

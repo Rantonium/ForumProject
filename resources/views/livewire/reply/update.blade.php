@@ -2,9 +2,11 @@
     <div x-data="{editReply:false, focus: function(){const textInput = this.$refs.textInput;textInput.focus();console.log('textInput');}}" x-cloak>
             <div x-show="!editReply" class="relative">
                 {{ $replyOldBody }}
+                @can(App\Policies\ReplyPolicy::UPDATE, App\Models\Reply::find($replyId))
                 <x-links.secondary x-on:click="editReply = true; $nextTick(()=> focus())" class="absolute cursor-pointer top-2 right-2">
                     {{ __('Edit') }}
                 </x-links.secondary>
+                @endcan
             </div>
 
             <div x-show="editReply">
