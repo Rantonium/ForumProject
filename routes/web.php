@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Pages\ReplyController;
 use App\Http\Controllers\Pages\TagController;
 use App\Http\Controllers\Pages\ThreadController;
@@ -40,6 +41,14 @@ Route::group(['prefix'=> 'replies', 'as' => 'replies.'], function(){
    Route::put('/{reply}',[ReplyController::class, 'update'])                        ->name('update');
    Route::delete('/{reply}',[ReplyController::class, 'destroy'])                    ->name('delete');
 
+});
+
+Route::group(['prefix'=> 'dashboard', 'as' => 'dashboard.'], function(){
+
+    Route::group(['prefix'=> 'notifications', 'as' => 'notifications.'], function() {
+        Route::post('/',[NotificationController::class, 'index'])      ->name('index');
+
+    });
 });
 
 Route::get('dashboard/users', [PageController::class, 'users'])                     ->name('users');
