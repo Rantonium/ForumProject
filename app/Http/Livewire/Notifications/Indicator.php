@@ -10,6 +10,8 @@ class Indicator extends Component
 {
     public $hasNotifications;
 
+    protected $listeners = ['markedAsRead' => 'setHasNotifications'];
+
     public function render(): View
     {
         $this->hasNotifications = $this->setHasNotifications(Auth::user()->unreadNotifications()->count());

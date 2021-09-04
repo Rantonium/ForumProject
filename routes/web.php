@@ -46,7 +46,7 @@ Route::group(['prefix'=> 'replies', 'as' => 'replies.'], function(){
 Route::group(['prefix'=> 'dashboard', 'as' => 'dashboard.'], function(){
 
     Route::group(['prefix'=> 'notifications', 'as' => 'notifications.'], function() {
-        Route::post('/',[NotificationController::class, 'index'])      ->name('index');
+        Route::get('/',[NotificationController::class, 'index'])      ->name('index');
 
     });
 });
