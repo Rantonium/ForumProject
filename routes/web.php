@@ -18,7 +18,7 @@ use App\Http\Controllers\PageController;
 |
 */
 
-require 'admin.php';
+// require 'admin.php';
 
 Route::get('/', [ThreadController::class, 'index'])                                 ->name('home');
 

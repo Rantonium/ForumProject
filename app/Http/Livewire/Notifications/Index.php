@@ -29,12 +29,15 @@ class Index extends Component
 
     /**
      * @throws AuthorizationException
+     * @noinspection PhpUnused
      */
     public function markAsRead(string $notificationId){
         $this->notificationId = $notificationId;
         $this->authorize(NotificationPolicy::MARK_AS_READ, $this->notification);
         $this->notification->markAsRead();
 
+
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->emit('markedAsRead', Auth::user()->unreadNotifications()->count());
     }
 }
