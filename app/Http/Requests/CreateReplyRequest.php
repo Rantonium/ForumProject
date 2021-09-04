@@ -38,7 +38,7 @@ class CreateReplyRequest extends FormRequest
         return $this->findReplyAble($this->get('replyable_id'), $this->get('replyable_type'));
     }
 
-    private function findReplyAble(int $id, string $type) : ReplyAble{
+    private function findReplyAble(int $id, string $type) : ?ReplyAble{
         switch($type){
             case 'threads':
                 return Thread::find($id);
