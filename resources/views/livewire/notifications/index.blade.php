@@ -3,7 +3,7 @@
         <table class="min-w-full">
             <thead class="bg-blue-500">
             <tr>
-                <x-table.head>Message</x-table.head>
+                <x-table.head>Thread</x-table.head>
                 <x-table.head>Date</x-table.head>
                 <x-table.head class="text-center">Action</x-table.head>
             </tr>

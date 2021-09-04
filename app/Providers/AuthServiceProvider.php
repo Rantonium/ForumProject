@@ -10,7 +10,7 @@ use App\Policies\ReplyPolicy;
 use App\Policies\ThreadPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\DatabaseNotification;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,7 +23,7 @@ class AuthServiceProvider extends ServiceProvider
         User::class => UserPolicy::class,
         Thread::class => ThreadPolicy::class,
         Reply::class => ReplyPolicy::class,
-        Notification::class => NotificationPolicy::class,
+        DatabaseNotification::class => NotificationPolicy::class,
     ];
 
     /**
